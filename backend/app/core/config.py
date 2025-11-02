@@ -1,6 +1,6 @@
+# app/core/config.py (Just change this line)
 import os
 from pydantic_settings import BaseSettings
-
 from typing import List, Optional
 from pathlib import Path
 
@@ -13,16 +13,15 @@ class Settings(BaseSettings):
     API_VERSION: str = "1.0.0"
     API_DESCRIPTION: str = "AI-powered budget categorization and financial planning API"
     
-      # Security Configuration
+    # Security Configuration
     SECRET_KEY: str = "your-super-secret-key-change-in-production-2025-finzer"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     
-    # Database Configuration
-    MONGODB_URL: str = "mongodb://localhost:27017"
+    # 🔥 Database Configuration - ONLY THIS LINE CHANGED
+    MONGODB_URL: str = "mongodb+srv://ritzzz8799_db_user:MXyTDGZSnXp2wven@finzer.uyxtkp6.mongodb.net/finzer_db?retryWrites=true&w=majority"
     DATABASE_NAME: str = "finzer_db"
-    
     
     # AI / ML API Keys
     GROQ_API_KEY: str = os.getenv("GROQ_API_KEY")
@@ -30,8 +29,9 @@ class Settings(BaseSettings):
 
     # CORS Configuration
     ALLOWED_ORIGINS: List[str] = [
-        "http://localhost:3000",
+        "http://localhost:8080",
         "http://127.0.0.1:3000",
+        "https://fin-zer-vnek.vercel.app/"
         "http://localhost:5173",
         "http://127.0.0.1:5173"
     ]
@@ -61,14 +61,15 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = True
-        extra = "ignore"  # Allows additional env vars without error
+        extra = "ignore"
 
 settings = Settings()
 
+# Create directories
 import os
 os.makedirs(settings.ML_MODEL_PATH, exist_ok=True)
 os.makedirs(Path(settings.LOG_FILE).parent, exist_ok=True)
 
 print(f"✅ Settings loaded: {settings.API_TITLE} v{settings.API_VERSION}")
 print(f"✅ Database: {settings.DATABASE_NAME}")
-print(f"✅ MongoDB URL: {settings.MONGODB_URL}")
+print(f"✅ MongoDB URL: MongoDB Atlas Cloud") # 🔥 Updated message

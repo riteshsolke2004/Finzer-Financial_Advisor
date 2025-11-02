@@ -1,7 +1,7 @@
 // src/components/DynamicProfilePage.tsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '@/components/DynamicNavbar';
+
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -183,7 +183,7 @@ const DynamicProfilePage: React.FC = () => {
   if (loading) {
     return (
       <>
-        <Header />
+       
         <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-muted/40 p-4 md:p-6 lg:p-8">
           <div className="max-w-4xl mx-auto flex items-center justify-center min-h-96">
             <div className="text-center">
@@ -217,7 +217,7 @@ const DynamicProfilePage: React.FC = () => {
 
   return (
     <>
-      <Header />
+      
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-muted/40 p-4 md:p-6 lg:p-8 font-sans">
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Header */}
