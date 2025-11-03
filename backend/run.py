@@ -18,15 +18,14 @@ def main():
     """Main function to run the API server"""
     print("🏦 Financial Literacy Budget Planner API")
     print("=" * 50)
-    print(f"🌐 Server: http://{settings.API_HOST}:{settings.API_PORT}")
-    print(f"📚 Docs: http://{settings.API_HOST}:{settings.API_PORT}/docs")
+    print(f"🌐 Server: http://{settings.API_HOST}")
+    print(f"📚 Docs: http://{settings.API_HOST}")
     print(f"🔧 Debug Mode: {settings.API_DEBUG}")
     print("=" * 50)
     
     uvicorn.run(
         "app.main:app",
         host=settings.API_HOST,
-        port=settings.API_PORT,
         reload=settings.API_DEBUG,
         log_level=settings.LOG_LEVEL.lower(),
         access_log=True

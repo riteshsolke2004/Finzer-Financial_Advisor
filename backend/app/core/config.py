@@ -6,8 +6,7 @@ from pathlib import Path
 
 class Settings(BaseSettings):
     # API Configuration
-    API_HOST: str = os.getenv("API_HOST", "0.0.0.0")
-    API_PORT: int = int(os.getenv("PORT", 8000))  # use Render's dynamic port
+    API_HOST: str = os.getenv("API_HOST", "0.0.0.0")  
     API_DEBUG: bool = True
     API_TITLE: str = "Financial Literacy Budget Planner API"
     API_VERSION: str = "1.0.0"
