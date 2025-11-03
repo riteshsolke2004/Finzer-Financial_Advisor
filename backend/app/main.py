@@ -7,6 +7,7 @@ from fastapi.exceptions import RequestValidationError
 from contextlib import asynccontextmanager
 import time
 import logging
+import os
 
 from app.core.config import settings
 from app.core.database import connect_to_mongo, close_mongo_connection, check_database_health
@@ -173,6 +174,7 @@ if __name__ == "__main__":
     uvicorn.run(
         "app.main:app",
         host=settings.API_HOST,
+        port=int(os.getenv("PORT", 8000)),
         reload=settings.API_DEBUG,
         log_level=settings.LOG_LEVEL.lower()
     )
