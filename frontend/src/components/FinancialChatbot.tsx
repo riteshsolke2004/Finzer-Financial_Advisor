@@ -50,7 +50,7 @@ import {
 import Header from './DynamicNavbar';
 
 // API Configuration
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_URL ;
 
 // Types
 interface ChatMessage {
