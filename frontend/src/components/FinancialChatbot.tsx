@@ -1,4 +1,3 @@
-// components/FinancialChatbot.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -50,7 +49,7 @@ import {
 import Header from './DynamicNavbar';
 
 // API Configuration
-const API_BASE_URL = import.meta.env.VITE_API_URL ;
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 // Types
 interface ChatMessage {
@@ -108,7 +107,7 @@ const transactionSchema = z.object({
   date: z.string().min(1, 'Date is required'),
 });
 
-// API Service
+// API Service (keeping the same)
 class ChatbotAPIService {
   private baseUrl: string;
 
@@ -191,7 +190,7 @@ class ChatbotAPIService {
   }
 }
 
-// Helper functions
+// Helper functions (keeping the same)
 const formatCurrency = (amount: number) => {
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',
@@ -430,8 +429,14 @@ Ask me anything about your finances! For example:
     }
   };
 
+  // FIXED: updateProfile function
   const updateProfile = (data: z.infer<typeof profileSchema>) => {
-    setUserProfile(data);
+    // Use spread operator to merge with previous state (safer approach)
+    setUserProfile(prev => ({
+      ...prev,
+      ...data
+    }));
+    
     setShowProfileDialog(false);
     
     toast({
@@ -441,26 +446,28 @@ Ask me anything about your finances! For example:
   };
 
   const addTransaction = (data: z.infer<typeof transactionSchema>) => {
-    const newTransaction: Transaction = {
-      id: Date.now().toString(),
-      ...data
-    };
-
-    setTransactions(prev => [...prev, newTransaction]);
-    setShowTransactionDialog(false);
-    transactionForm.reset();
-    
-    toast({
-      title: "Transaction added!",
-      description: "New transaction added to your financial data.",
-    });
+  const newTransaction: Transaction = {
+    id: Date.now().toString(),
+    description: data.description,
+    amount: data.amount,
+    category: data.category,
+    date: data.date
   };
+
+  setTransactions(prev => [...prev, newTransaction]);
+  setShowTransactionDialog(false);
+  transactionForm.reset();
+  
+  toast({
+    title: "Transaction added!",
+    description: "New transaction added to your financial data.",
+  });
+};
 
   const clearChat = () => {
     setMessages([]);
     addWelcomeMessage();
   };
-
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900">
