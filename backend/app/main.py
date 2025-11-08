@@ -76,7 +76,7 @@ app.add_middleware(
 # Trusted Host middleware
 app.add_middleware(
     TrustedHostMiddleware,
-    allowed_hosts=["0.0.0.0", "*","http://13.203.159.14:3000"]
+    allowed_hosts=["0.0.0.0", "*","http://13.203.159.14:3000","https://finzer-financial-advisor.vercel.app"]
 )
 
 # Request timing middleware
