@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     
     # 🔥 Database Configuration - ONLY THIS LINE CHANGED
-    MONGODB_URL: str = "mongodb+srv://ritzzz8799_db_user:MXyTDGZSnXp2wven@finzer.uyxtkp6.mongodb.net/finzer_db?retryWrites=true&w=majority"
+    MONGODB_URL: str = "mongodb+srv://ritesh_finzer:Ritesh123@cluster0.1i6kxzh.mongodb.net/finzer_db?retryWrites=true&w=majority"
     DATABASE_NAME: str = "finzer_db"
     
     # AI / ML API Keys
