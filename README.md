@@ -3,6 +3,7 @@
 > 🚀 Developed for **HackWave 1.0**, FinZer is an AI-driven **personal financial wellness and literacy platform** that helps young adults understand, plan, and improve their financial health using smart insights, gamified analytics, and an interactive web interface.
 
 ---
+## LIVE URL :- https://finzer-financial-advisor.vercel.app/
 
 ## 🧩 Problem Statement
 
